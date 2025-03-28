@@ -1,0 +1,29 @@
+5 minutes to get the basic setup going and an index.html file serving.
+32 minutes to get the layout notes done (in photoshop, and this text file)
+
+##Layout Notes
+
+I'll use my standard grid layout on the body to center main, with the side columns minmax'd to the dimensions on mobile up to 1fr.
+
+The cards section appears to be a grid of 4 rows with both row and col gap (equal dims). The top and bottom cards, in the middle will span rows 1 & 2, and 3 & 4 respectively. The side cards will span rows 2 & 3. 
+
+###Header
+
+This will contain an <hgroup> with a <p> and the <h1>. I don't think it's necessary to try to extend the grid to the upper section since it doesn't seem to fit as nicely. Instead the <header> can be a flex container with everything nicely center and a bit of gap, with a bottom margin to give it space between that and the cards section.
+
+*update: actually I don't want to use the <hgroup> because then the <p> and the <h1> are children of that, instead of the header. Keep it simple.
+
+###Card section
+
+As previously noted, a 3-column, 4-row grid layout with gap. When it goes to mobile size the cards will simply span the 3 columns. 
+
+I wonder if there is a way of identifying the cards somehow, and then they can just seamlessly flow from desktop to mobile? Actually, if I set them up in order as they are in mobile, and then control their cols/rows on desktop--I think what I can do is have an @media rule specifically for those.
+
+###The Cards
+
+I can't quite tell if the color at the top is a border or not...I think it might be the border top. Since it's rounded it will simply cut off with that look. That's what I'll try.
+
+The card itself might be a flex container, with the heading and paragraph justified left, and the image justified right. Then the alignment might simply be a spacing. 
+
+*update: I'll put the heading and paragraph into it's own container, then that will have a gap between itself and the image. Ugh, I'm not sure which will work better.
+
