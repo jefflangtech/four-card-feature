@@ -1,0 +1,115 @@
+:root {
+  --dark-grey: rgb(77, 79, 98);
+  --medium-grey: rgb(106, 113, 120);
+  --white: rgb(255, 255, 255);
+  --red: rgb(234, 84, 84);
+  --cyan: rgb(68, 211, 210);
+  --blue: rgb(84, 158, 242);
+  --orange: rgb(252, 174, 74);
+  --margin-100: 0.5rem;
+  --margin-200: 1rem;
+  --margin-300: 1.5rem;
+  --margin-400: 2rem;
+  --margin-500: 2.5rem;
+  font-size: 16px;
+}
+
+html {
+  font-family: 'Poppins', sans-serif;
+  color: var(--dark-grey);
+}
+
+.text-1 {
+  font-size: 2.25rem;
+  font-weight: 600;
+  line-height: 140%;
+  letter-spacing: 0.25px;
+}
+
+.text-2 {
+  font-size: 2.25rem;
+  font-weight: 200;
+  line-height: 140%;
+  letter-spacing: 0.25px;
+}
+
+.text-3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 135%;
+  letter-spacing: 0px;
+}
+
+.text-4 {
+  font-size: 0.94rem;
+  font-weight: 400;
+  line-height: 140%;
+  letter-spacing: 0px;
+}
+
+.text-5 {
+  font-size: 0.81rem;
+  font-weight: 400;
+  line-height: 160%;
+  letter-spacing: 0px;
+}
+
+body {
+  background-color: purple;
+  display: grid;
+  grid-template-columns: 
+    minmax(1.9rem, 1fr) 
+    [content-start] minmax(19.7rem, 70rem) [content-end] 
+    minmax(1.9rem, 1fr);
+  grid-template-rows: 100px 1fr 100px;
+}
+
+main {
+  grid-column: content-start / content-end;
+  grid-row: 2;
+  background-color: var(--white);
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  & > * {
+    text-align: center;
+    max-width: 33.75rem;
+  }
+}
+
+.grid-card-container {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: var(--margin-400);
+  max-width: 100%;
+}
+
+.card:nth-child(1) {
+  grid-row: 2 / span 2;
+  grid-column: 1 / span 4;
+}
+
+.card:nth-child(2) {
+  grid-row: 1 / span 2;
+  grid-column: 5 / span 4;
+}
+
+.card:nth-child(3) {
+  grid-row: 3 / span 2;
+  grid-column: 5 / span 4;
+}
+
+.card:nth-child(4) {
+  grid-row: 2 / span 2;
+  grid-column: 9 / span 4;
+}
+
+.card {
+  outline: 1px solid green;
+  width: 350px;
+  height: 250px;
+}

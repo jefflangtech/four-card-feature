@@ -19,6 +19,28 @@ As previously noted, a 3-column, 4-row grid layout with gap. When it goes to mob
 
 I wonder if there is a way of identifying the cards somehow, and then they can just seamlessly flow from desktop to mobile? Actually, if I set them up in order as they are in mobile, and then control their cols/rows on desktop--I think what I can do is have an @media rule specifically for those.
 
+*UPDATE* Might need to experiment with a 12-column layout since the tablet view has a middle arrangement of cards, kind of the opposite of what desktop has.
+
+***After watching a great video by Kevin Powell, randomly, about flexbox, I realized I can probably do this with a flex container.
+When it's in desktop mode, the flex container is ordered by column, and it appears to go in reverse. I am not sure how to get the first card to be solo in the column, and then the second and third card pushed to the middle (2nd) column, with the 4th card taking up the last. That I'll have to figure out.
+
+Then in tablet/mobile mode it goes to rows (technically, mobile could go back to a single column, but 4 rows also does the trick) where on tablet, the first card again takes up the whole row, the 2nd and 3rd cards take up the second row, and the 4th card again brings up the rear.
+
+##Okay, I got it:
+A grid container in the body, with justify content center → all the content goes in the center column, using my handy clamp column technique for the outside columns. The content can naturally flow down from the top, each controlling it's own vertical spacing.
+
+##Then the flexbox container, which will consist of the 4 cards inside, and will be flex-column (?) first then go to rows. The directionality of the rows will have to be considered for each layout. 
+
+
+<main>
+  <article>
+    <header>
+      <p>
+      <h1>
+      <p> → might need some sort of max-width?
+      <div.flexbox>
+        <div.card> * 4
+
 ###The Cards
 
 I can't quite tell if the color at the top is a border or not...I think it might be the border top. Since it's rounded it will simply cut off with that look. That's what I'll try.
