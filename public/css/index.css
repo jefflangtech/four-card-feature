@@ -6,6 +6,7 @@
   --cyan: rgb(68, 211, 210);
   --blue: rgb(84, 158, 242);
   --orange: rgb(252, 174, 74);
+  --bg: rgb(250, 250, 250);
   --margin-100: 0.5rem;
   --margin-200: 1rem;
   --margin-300: 1.5rem;
@@ -44,7 +45,7 @@ html {
   font-size: 0.94rem;
   font-weight: 400;
   line-height: 140%;
-  letter-spacing: 0px;
+  letter-spacing: 0.9px;
 }
 
 .text-5 {
@@ -55,13 +56,13 @@ html {
 }
 
 body {
-  background-color: purple;
+  background-color: --var(bg);
   display: grid;
   grid-template-columns: 
     minmax(1.9rem, 1fr) 
     [content-start] minmax(19.7rem, 70rem) [content-end] 
     minmax(1.9rem, 1fr);
-  grid-template-rows: 100px 1fr 100px;
+  grid-template-rows: 6.375rem 1fr 6.375rem;
 }
 
 main {
@@ -70,14 +71,58 @@ main {
   background-color: var(--white);
 }
 
+/* Overlay styles for pixel proofing only */
+#overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 900;
+  grid-column: 1;
+  grid-row: 1;
+}
+#desktop-overlay {
+  width: 1440px;
+  height: 1029px;
+  & img {
+    width: 100%;
+    height: 100%;
+    opacity: 0.4;
+    /* outline:1px solid red; */
+  }
+}
+#tablet-overlay {
+  width: 768px;
+  height: 1206px;
+  & img {
+    width: 100%;
+    height: 100%;
+    opacity: 0.4;
+  }
+}
+#mobile-overlay {
+  width: 375px;
+  height: 1405px;
+  & img {
+    width: 100%;
+    height: 100%;
+    opacity: 0.4;
+    /* outline:1px solid red; */
+  }
+}
+
 header {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 4.63rem;
   & > * {
     text-align: center;
     max-width: 33.75rem;
   }
+}
+
+h1 {
+  margin-bottom: 1rem;
 }
 
 .grid-card-container {
@@ -91,25 +136,125 @@ header {
 .card:nth-child(1) {
   grid-row: 2 / span 2;
   grid-column: 1 / span 4;
+  &::before {
+    background-color: var(--cyan);
+  }
+  &::after {
+    content: url('../images/icon-supervisor.svg');
+  }
 }
 
 .card:nth-child(2) {
   grid-row: 1 / span 2;
   grid-column: 5 / span 4;
+  &::before {
+    background-color: var(--red);
+  }
+  &::after {
+    content: url('../images/icon-team-builder.svg');
+  }
 }
 
 .card:nth-child(3) {
   grid-row: 3 / span 2;
   grid-column: 5 / span 4;
+  &::before {
+    background-color: var(--orange);
+  }
+  &::after {
+    content: url('../images/icon-karma.svg');
+  }
 }
 
 .card:nth-child(4) {
   grid-row: 2 / span 2;
   grid-column: 9 / span 4;
+  &::before {
+    background-color: var(--blue);
+  }
+  &::after {
+    content: url('../images/icon-calculator.svg');
+  }
 }
 
 .card {
-  outline: 1px solid green;
-  width: 350px;
   height: 250px;
+  border-radius: 0.5rem;
+  overflow:hidden;
+  box-shadow: rgba(131, 166, 210, 0.5) 0px 15px 30px -11px;
+}
+.card::before {
+  content: '';
+  width: 100%;
+  height: 0.25rem;
+  background-color: inherit;
+  display:block;
+}
+.card::after {
+  width: 4rem;
+  height: 4rem;
+  margin-left: auto;
+  margin-right: 2rem;
+  display:block;
+}
+.card .content {
+  padding: 2rem;
+}
+
+@media (max-width: 800px) {
+  body {
+    grid-template-rows: 5rem 1fr 5rem;
+  }
+  .card:nth-child(1) {
+    grid-row: 1 / span 1;
+    grid-column: 4 / span 6;
+  }
+
+  .card:nth-child(2) {
+    grid-row: 2 / span 1;
+    grid-column: 1 / span 6;
+  }
+
+  .card:nth-child(3) {
+    grid-row: 2 / span 1;
+    grid-column: 7 / span 6;
+  }
+
+  .card:nth-child(4) {
+    grid-row: 3 / span 1;
+    grid-column: 4 / span 6;
+  }
+}
+
+@media (min-width: 425px) and (max-width: 800px) {
+  body {
+    grid-template-columns: 
+      minmax(3.375rem, 1fr) 
+      [content-start] minmax(19.7rem, 70rem) [content-end] 
+      minmax(3.375rem, 1fr);
+    grid-template-rows: 5rem 1fr 5rem;
+  }
+}
+
+@media (max-width: 590px) {
+  .text-1,
+  .text-2 {
+    font-size: 1.5rem;
+  }
+  .grid-card-container {
+    column-gap: 0rem;
+  }
+  .card:nth-child(n) {
+    grid-row:auto;
+    grid-column: 1 / span 12;
+  }
+}
+
+@media (max-width: 400px) {
+  body {
+    grid-template-rows: 3.5rem 1fr 3.5rem;
+  }
+  header {
+    margin-bottom: 3.75rem;
+  }
 }

@@ -31,6 +31,9 @@ A grid container in the body, with justify content center → all the content go
 
 ##Then the flexbox container, which will consist of the 4 cards inside, and will be flex-column (?) first then go to rows. The directionality of the rows will have to be considered for each layout. 
 
+****NOPE*****
+Because with flexbox I can't control where the cards go, or how the wrapping happens. So I'm back to a 12 column grid, woohoo!
+
 
 <main>
   <article>
